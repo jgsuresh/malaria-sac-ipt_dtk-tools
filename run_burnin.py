@@ -41,7 +41,9 @@ burnin_setup(cb, archetype)
 modlists = []
 
 # habitat_scale_array = np.round(np.linspace(8,9,11), decimals=1)
-habitat_scale_array = np.array([7.9,8.1,8.3,8.5,8.7,8.9])
+# habitat_scale_array = np.array([7.9,8.1,8.3,8.5,8.7,8.9])
+# habitat_scale_array = np.array([7.5,7.6,7.7,7.8])
+habitat_scale_array = np.array([7.1,7.2,7.3,7.4])
 modlist = modfn_sweep_over_habitat_scale(habitat_scale_array, archetype)
 modlists.append(modlist)
 
@@ -59,7 +61,7 @@ add_burnin_reports(cb, include_inset=True)
 # Submission/COMPs parameters #
 ###############################
 
-comps_experiment_name = "southern_burnin_v3"
+comps_experiment_name = "southern_burnin_v3_evenlower"
 # comps_priority = "Normal"
 comps_priority = "AboveNormal"
 comps_coreset = "emod_abcd"

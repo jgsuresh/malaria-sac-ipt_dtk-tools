@@ -247,7 +247,7 @@ def add_scenario_specific_ipt(cb, scenario_dict, archetype):
     if scenario_dict["screen_type"] == "IPT":
         dtk_campaign_type = "MDA"
     elif scenario_dict["screen_type"] == "IST":
-        dtk_campaign_type = "MTAT"
+        dtk_campaign_type = "MSAT"
     else:
         raise NotImplementedError
 
@@ -269,7 +269,9 @@ def add_scenario_specific_ipt(cb, scenario_dict, archetype):
                       drug_code=drug_code,
                       start_days=list(campaign_days),
                       coverage=scenario_dict["school"],
-                      ind_property_restrictions=[{"SchoolStatus": "AttendsSchool"}])
+                      ind_property_restrictions=[{"SchoolStatus": "AttendsSchool"}],
+                      diagnostic_type='BLOOD_SMEAR_PARASITES',
+                      diagnostic_threshold=0)
 
     #fixme repetitions?
 
@@ -286,6 +288,8 @@ def add_scenario_specific_interventions(cb, scenario_number, archetype="Southern
     add_scenario_specific_healthseeking(cb, scenario_dict["hs_rate"])
     add_scenario_specific_ipt(cb, scenario_dict, archetype)
 
+    return scenario_dict
+
 
 def set_school_children_ips(cb, sac_in_school_fraction=0.9):
     # Initial setup
@@ -293,7 +297,9 @@ def set_school_children_ips(cb, sac_in_school_fraction=0.9):
                                target_property_name="SchoolStatus",
                                target_property_value="AttendsSchool",
                                target_group={"agemin": 5, "agemax": 16},
-                               daily_prob=sac_in_school_fraction,
+                               coverage=sac_in_school_fraction,
+                               daily_prob=1,
+                               max_duration=1,
                                start_day=1)
 
     # Each September 1st, add in new kids and remove old ones:
@@ -302,15 +308,49 @@ def set_school_children_ips(cb, sac_in_school_fraction=0.9):
                                    target_property_name="SchoolStatus",
                                    target_property_value="AttendsSchool",
                                    target_group={"agemin": 5, "agemax": 6},
-                                   daily_prob=sac_in_school_fraction,
+                                   coverage=sac_in_school_fraction,
+                                   daily_prob=1,
+                                   max_duration=1,
                                    start_day=school_start_day)
 
         change_individual_property(cb,
                                    target_property_name="SchoolStatus",
                                    target_property_value="DoesNotAttendSchool",
                                    target_group={"agemin": 16, "agemax": 17},
+                                   coverage=1,
                                    daily_prob=1,
+                                   max_duration=1,
                                    start_day=school_start_day)
+
+
+def set_school_children_ips_TEST(cb):
+    # Initial setup
+    change_individual_property(cb,
+                               target_property_name="SchoolStatus",
+                               target_property_value="AttendsSchool",
+                               target_group={"agemin": 5, "agemax": 16},
+                               coverage=0.9,
+                               daily_prob=1,
+                               max_duration=1,
+                               start_day=1)
+
+    # school_start_day = 244
+    # change_individual_property(cb,
+    #                            target_property_name="SchoolStatus",
+    #                            target_property_value="AttendsSchool",
+    #                            target_group={"agemin": 5, "agemax": 6},
+    #                            daily_prob=1,
+    #                            max_duration=1,
+    #                            start_day=school_start_day)
+    #
+    # change_individual_property(cb,
+    #                            target_property_name="SchoolStatus",
+    #                            target_property_value="DoesNotAttendSchool",
+    #                            target_group={"agemin": 16, "agemax": 17},
+    #                            daily_prob=1,
+    #                            max_duration=1,
+    #                            start_day=school_start_day)
+
 
 
 def recurring_outbreak_as_importation_josh(cb, outbreak_fraction=0.01, repetitions=-1, tsteps_btwn=365, target='Everyone', start_day=0, strain=(0,0), nodes={"class": "NodeSetAll"}, outbreak_source="PrevalenceIncrease", property_restrictions=[]):

@@ -1,5 +1,8 @@
 import pandas as pd
+import numpy as np
+
 from interventions import add_scenario_specific_interventions
+from malaria.interventions.malaria_drug_campaigns import add_drug_campaign
 
 from setup_sim import set_ento_splines
 from simtools.ModBuilder import ModFn
@@ -26,9 +29,37 @@ def modfn_sweep_over_scenarios(archetype):
     modlist = [ModFn(add_scenario_specific_interventions, ns, archetype) for ns in scenario_numbers]
     return modlist
 
+
 def modfn_sweep_over_timings(archetype):
-    timings_df = pd.read_csv()
+    if archetype == "Southern":
+        timings_df = pd.read_csv("southern_term_sweep_scenarios.csv")
+        scenario_numbers = list(timings_df["scenario_number"])
+
+        # scenario_numbers = range(5) #TEST ONLY
+
+        modlist = [ModFn(add_ipt_for_timing_sweep_southern, ns) for ns in scenario_numbers]
+        return modlist
+    else:
+        raise NotImplementedError
 
 
-    #fixme difference between a regular scenario and one of these sweeps:
-    # no itns.  only one year.
+#fixme not very elegant/general to other archetypes
+def add_ipt_for_timing_sweep_southern(cb, scenario_number):
+    timings_df = pd.read_csv("southern_term_sweep_scenarios.csv")
+
+    scenario_dict = dict(timings_df[timings_df["scenario_number"]==scenario_number].reset_index(drop=True).iloc[0])
+
+    campaign_days = np.array([scenario_dict["term1_day"],
+                              scenario_dict["term2_day"],
+                              scenario_dict["term3_day"]])
+
+    add_drug_campaign(cb,
+                      campaign_type="MDA",
+                      drug_code="DPP",
+                      start_days=list(campaign_days),
+                      coverage=1,
+                      ind_property_restrictions=[{"SchoolStatus": "AttendsSchool"}])
+
+    return {"scenario_number": scenario_number}
+
+    #fixme repetitions?

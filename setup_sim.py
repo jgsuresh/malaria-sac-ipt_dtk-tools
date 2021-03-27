@@ -180,6 +180,9 @@ def basic_gridded_config_builder():
 
     # Intervention events
     intervene_events_list = ["Bednet_Got_New_One","Bednet_Using","Bednet_Discarded"]
+    cb.set_param("Custom_Individual_Events", [
+        "Bednet_Got_New_One","Bednet_Using","Bednet_Discarded", "Received_Treatment", "Received_Campaign_Drugs", "Received_RCD_Drugs", "Received_Test"
+    ])
 
     cb.update_params({
         "Report_Event_Recorder": 0,
