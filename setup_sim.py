@@ -1,3 +1,5 @@
+import os
+
 from dtk.interventions.outbreakindividual import recurring_outbreak
 from dtk.utils.core.DTKConfigBuilder import DTKConfigBuilder
 
@@ -54,7 +56,7 @@ def set_ento_splines(cb, habitat_scale, archetype="Southern"):
                               "Capacity_Distribution_Number_Of_Years": 1,
                               "Capacity_Distribution_Over_Time": {
                                   "Times": month_times,
-                                  "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06, 0.06]
+                                  "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
                               },
                               "Max_Larval_Capacity": 10**habitat_scale
                           }})
@@ -99,7 +101,7 @@ def set_ento(cb, archetype="Southern"):
 def build_project_cb(archetype="Southern"):
     # cb = DTKConfigBuilder.from_defaults("MALARIA_SIM")
     # add_params_csv_to_dtk_config_builder(cb, params_csv_filename)
-    cb = basic_gridded_config_builder()
+    cb = basic_gridded_config_builder(archetype=archetype)
 
     set_executable(cb, bin_folder)
     cb.set_input_files_root(input_folder)
@@ -136,7 +138,7 @@ def set_input_files(cb, archetype="Southern"):
     else:
         raise NotImplementedError
 
-def basic_gridded_config_builder():
+def basic_gridded_config_builder(archetype="Southern"):
     cb = DTKConfigBuilder.from_defaults('MALARIA_SIM')
 
     cb.update_params(immunity.params)
@@ -180,20 +182,31 @@ def basic_gridded_config_builder():
 
     # Intervention events
     intervene_events_list = ["Bednet_Got_New_One","Bednet_Using","Bednet_Discarded"]
-    cb.set_param("Custom_Individual_Events", [
-        "Bednet_Got_New_One","Bednet_Using","Bednet_Discarded", "Received_Treatment", "Received_Campaign_Drugs", "Received_RCD_Drugs", "Received_Test"
-    ])
+    full_custom_events_list = [
+        "Bednet_Got_New_One",
+        "Bednet_Using",
+        "Bednet_Discarded",
+        "Received_Treatment",
+        "Received_Campaign_Drugs",
+        "Received_RCD_Drugs",
+        "Received_Test",
+        "Received_SMC",
+        "Took_Dose",
+        "InfectionDropped"
+    ]
+    cb.set_param("Custom_Individual_Events", full_custom_events_list)
+
 
     cb.update_params({
         "Report_Event_Recorder": 0,
         "Report_Event_Recorder_Ignore_Events_In_List": 0,
-        "Listed_Events": intervene_events_list,
-        "Report_Event_Recorder_Events": intervene_events_list
+        # "Listed_Events": full_custom_events_list, #intervene_events_list
+        "Report_Event_Recorder_Events": full_custom_events_list #intervene_events_list
     })
 
 
     # Basic entomology
-    set_ento(cb, archetype="Southern") # I think there just needs to be something set for now
+    set_ento(cb, archetype=archetype) # I think there just needs to be something set for now
 
     return cb
 
@@ -206,7 +219,14 @@ def burnin_setup(cb, archetype):
     # recurring_outbreak(cb, outbreak_fraction=0.005)
     seasonal_daily_importations(cb, 25)
 
-def scenario_setup(cb,archetype):
-    cb.set_param("Simulation_Duration", 2*365)
-    # serialization?
-    pass
+# def scenario_setup(cb,archetype):
+#     cb.set_param("Simulation_Duration", 2*365)
+
+def draw_from_serialized_file(cb, burnin_dict):
+    filepath = os.path.join(burnin_dict["path"], "output")
+    cb.set_param("Serialized_Population_Path", filepath)
+    cb.set_param("Serialized_Population_Filenames", ["state-18250.dtk"])
+
+    return {"burnin_approx_pfpr2_10": burnin_dict["approximate_pfpr2_10"],
+            "burnin_habitat_scale": burnin_dict["habitat_scale"]}
+

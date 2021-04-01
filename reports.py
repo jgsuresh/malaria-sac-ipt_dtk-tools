@@ -15,7 +15,8 @@ def add_burnin_reports(cb, include_inset=False):
         "Bednet_Discarded",
         "Bednet_Got_New_One",
         "Bednet_Using",
-        "Received_Treatment"]
+        "Received_Treatment",
+        "Received_SMC"]
 
     add_event_counter_report(cb,
                              event_trigger_list=events_to_count,
@@ -28,7 +29,9 @@ def add_scenario_reports(cb, include_inset=True):
         "Received_Treatment",
         "Received_Test",
         "Received_Campaign_Drugs",
-        "Received_RCD_Drugs"]
+        "Received_RCD_Drugs",
+        "Received_SMC"
+    ]
 
     add_event_counter_report(cb,
                              event_trigger_list=events_to_count)

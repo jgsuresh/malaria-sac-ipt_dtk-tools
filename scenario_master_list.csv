@@ -1,143 +1,35 @@
-archetype,drug_type,screen_type,interval,school_coverage,itn_coverage,hs_rate,scenario_number
-Southern,ASAQ,IPT,term,0.6,default,default,0
-Southern,ASAQ,IPT,term,0.8,default,default,1
-Southern,ASAQ,IPT,term,1.0,default,default,2
-Southern,ASAQ,IPT,month,0.6,default,default,3
-Southern,ASAQ,IPT,month,0.8,default,default,4
-Southern,ASAQ,IPT,month,1.0,default,default,5
-Southern,ASAQ,IST,term,0.6,default,default,6
-Southern,ASAQ,IST,term,0.8,default,default,7
-Southern,ASAQ,IST,term,1.0,default,default,8
-Southern,ASAQ,IST,month,0.6,default,default,9
-Southern,ASAQ,IST,month,0.8,default,default,10
-Southern,ASAQ,IST,month,1.0,default,default,11
-Southern,DP,IPT,term,0.6,default,default,12
-Southern,DP,IPT,term,0.8,default,default,13
-Southern,DP,IPT,term,1.0,default,default,14
-Southern,DP,IPT,month,0.6,default,default,15
-Southern,DP,IPT,month,0.8,default,default,16
-Southern,DP,IPT,month,1.0,default,default,17
-Southern,DP,IST,term,0.6,default,default,18
-Southern,DP,IST,term,0.8,default,default,19
-Southern,DP,IST,term,1.0,default,default,20
-Southern,DP,IST,month,0.6,default,default,21
-Southern,DP,IST,month,0.8,default,default,22
-Southern,DP,IST,month,1.0,default,default,23
-Southern,DP,IPT,month,0.8,low,default,24
-Southern,DP,IPT,month,0.8,default,high,25
-Central,ASAQ,IPT,term,0.6,default,default,0
-Central,ASAQ,IPT,term,0.8,default,default,1
-Central,ASAQ,IPT,term,1.0,default,default,2
-Central,ASAQ,IPT,month,0.6,default,default,3
-Central,ASAQ,IPT,month,0.8,default,default,4
-Central,ASAQ,IPT,month,1.0,default,default,5
-Central,ASAQ,IST,term,0.6,default,default,6
-Central,ASAQ,IST,term,0.8,default,default,7
-Central,ASAQ,IST,term,1.0,default,default,8
-Central,ASAQ,IST,month,0.6,default,default,9
-Central,ASAQ,IST,month,0.8,default,default,10
-Central,ASAQ,IST,month,1.0,default,default,11
-Central,DP,IPT,term,0.6,default,default,12
-Central,DP,IPT,term,0.8,default,default,13
-Central,DP,IPT,term,1.0,default,default,14
-Central,DP,IPT,month,0.6,default,default,15
-Central,DP,IPT,month,0.8,default,default,16
-Central,DP,IPT,month,1.0,default,default,17
-Central,DP,IST,term,0.6,default,default,18
-Central,DP,IST,term,0.8,default,default,19
-Central,DP,IST,term,1.0,default,default,20
-Central,DP,IST,month,0.6,default,default,21
-Central,DP,IST,month,0.8,default,default,22
-Central,DP,IST,month,1.0,default,default,23
-Central,DP,IPT,month,0.8,low,default,24
-Central,DP,IPT,month,0.8,default,high,25
-Eastern,ASAQ,IPT,term,0.6,default,default,0
-Eastern,ASAQ,IPT,term,0.8,default,default,1
-Eastern,ASAQ,IPT,term,1.0,default,default,2
-Eastern,ASAQ,IPT,month,0.6,default,default,3
-Eastern,ASAQ,IPT,month,0.8,default,default,4
-Eastern,ASAQ,IPT,month,1.0,default,default,5
-Eastern,ASAQ,IST,term,0.6,default,default,6
-Eastern,ASAQ,IST,term,0.8,default,default,7
-Eastern,ASAQ,IST,term,1.0,default,default,8
-Eastern,ASAQ,IST,month,0.6,default,default,9
-Eastern,ASAQ,IST,month,0.8,default,default,10
-Eastern,ASAQ,IST,month,1.0,default,default,11
-Eastern,SPAQ,IPT,term,0.6,default,default,12
-Eastern,SPAQ,IPT,term,0.8,default,default,13
-Eastern,SPAQ,IPT,term,1.0,default,default,14
-Eastern,SPAQ,IPT,month,0.6,default,default,15
-Eastern,SPAQ,IPT,month,0.8,default,default,16
-Eastern,SPAQ,IPT,month,1.0,default,default,17
-Eastern,SPAQ,IST,term,0.6,default,default,18
-Eastern,SPAQ,IST,term,0.8,default,default,19
-Eastern,SPAQ,IST,term,1.0,default,default,20
-Eastern,SPAQ,IST,month,0.6,default,default,21
-Eastern,SPAQ,IST,month,0.8,default,default,22
-Eastern,SPAQ,IST,month,1.0,default,default,23
-Eastern,DP,IPT,term,0.6,default,default,24
-Eastern,DP,IPT,term,0.8,default,default,25
-Eastern,DP,IPT,term,1.0,default,default,26
-Eastern,DP,IPT,month,0.6,default,default,27
-Eastern,DP,IPT,month,0.8,default,default,28
-Eastern,DP,IPT,month,1.0,default,default,29
-Eastern,DP,IST,term,0.6,default,default,30
-Eastern,DP,IST,term,0.8,default,default,31
-Eastern,DP,IST,term,1.0,default,default,32
-Eastern,DP,IST,month,0.6,default,default,33
-Eastern,DP,IST,month,0.8,default,default,34
-Eastern,DP,IST,month,1.0,default,default,35
-Eastern,DP,IPT,month,0.8,low,default,36
-Eastern,DP,IPT,month,0.8,default,high,37
-Coastal Western,SPAQ,IPT,term,0.6,default,default,0
-Coastal Western,SPAQ,IPT,term,0.8,default,default,1
-Coastal Western,SPAQ,IPT,term,1.0,default,default,2
-Coastal Western,SPAQ,IPT,month,0.6,default,default,3
-Coastal Western,SPAQ,IPT,month,0.8,default,default,4
-Coastal Western,SPAQ,IPT,month,1.0,default,default,5
-Coastal Western,SPAQ,IST,term,0.6,default,default,6
-Coastal Western,SPAQ,IST,term,0.8,default,default,7
-Coastal Western,SPAQ,IST,term,1.0,default,default,8
-Coastal Western,SPAQ,IST,month,0.6,default,default,9
-Coastal Western,SPAQ,IST,month,0.8,default,default,10
-Coastal Western,SPAQ,IST,month,1.0,default,default,11
-Coastal Western,DP,IPT,term,0.6,default,default,12
-Coastal Western,DP,IPT,term,0.8,default,default,13
-Coastal Western,DP,IPT,term,1.0,default,default,14
-Coastal Western,DP,IPT,month,0.6,default,default,15
-Coastal Western,DP,IPT,month,0.8,default,default,16
-Coastal Western,DP,IPT,month,1.0,default,default,17
-Coastal Western,DP,IST,term,0.6,default,default,18
-Coastal Western,DP,IST,term,0.8,default,default,19
-Coastal Western,DP,IST,term,1.0,default,default,20
-Coastal Western,DP,IST,month,0.6,default,default,21
-Coastal Western,DP,IST,month,0.8,default,default,22
-Coastal Western,DP,IST,month,1.0,default,default,23
-Coastal Western,DP,IPT,month,0.8,low,default,24
-Coastal Western,DP,IPT,month,0.8,default,high,25
-Sahel,SPAQ,IPT,term,0.6,default,default,0
-Sahel,SPAQ,IPT,term,0.8,default,default,1
-Sahel,SPAQ,IPT,term,1.0,default,default,2
-Sahel,SPAQ,IPT,month,0.6,default,default,3
-Sahel,SPAQ,IPT,month,0.8,default,default,4
-Sahel,SPAQ,IPT,month,1.0,default,default,5
-Sahel,SPAQ,IST,term,0.6,default,default,6
-Sahel,SPAQ,IST,term,0.8,default,default,7
-Sahel,SPAQ,IST,term,1.0,default,default,8
-Sahel,SPAQ,IST,month,0.6,default,default,9
-Sahel,SPAQ,IST,month,0.8,default,default,10
-Sahel,SPAQ,IST,month,1.0,default,default,11
-Sahel,DP,IPT,term,0.6,default,default,12
-Sahel,DP,IPT,term,0.8,default,default,13
-Sahel,DP,IPT,term,1.0,default,default,14
-Sahel,DP,IPT,month,0.6,default,default,15
-Sahel,DP,IPT,month,0.8,default,default,16
-Sahel,DP,IPT,month,1.0,default,default,17
-Sahel,DP,IST,term,0.6,default,default,18
-Sahel,DP,IST,term,0.8,default,default,19
-Sahel,DP,IST,term,1.0,default,default,20
-Sahel,DP,IST,month,0.6,default,default,21
-Sahel,DP,IST,month,0.8,default,default,22
-Sahel,DP,IST,month,1.0,default,default,23
-Sahel,DP,IPT,month,0.8,low,default,24
-Sahel,DP,IPT,month,0.8,default,high,25
+archetype,drug_type,screen_type,interval,itn_coverage,hs_rate,within_school_coverage,out_of_school_rate,target_age_range,smc_on,scenario_number
+Southern,ASAQ,IPT,term,default,default,0.9,0.0,default,False,0
+Southern,ASAQ,IPT,term,default,default,0.9,0.15,default,False,1
+Southern,ASAQ,IPT,term,default,default,0.9,0.3,default,False,2
+Southern,ASAQ,IPT,month,default,default,0.9,0.0,default,False,3
+Southern,ASAQ,IPT,month,default,default,0.9,0.15,default,False,4
+Southern,ASAQ,IPT,month,default,default,0.9,0.3,default,False,5
+Southern,ASAQ,IST,term,default,default,0.9,0.0,default,False,6
+Southern,ASAQ,IST,term,default,default,0.9,0.15,default,False,7
+Southern,ASAQ,IST,term,default,default,0.9,0.3,default,False,8
+Southern,ASAQ,IST,month,default,default,0.9,0.0,default,False,9
+Southern,ASAQ,IST,month,default,default,0.9,0.15,default,False,10
+Southern,ASAQ,IST,month,default,default,0.9,0.3,default,False,11
+Southern,DP,IPT,term,default,default,0.9,0.0,default,False,12
+Southern,DP,IPT,term,default,default,0.9,0.15,default,False,13
+Southern,DP,IPT,term,default,default,0.9,0.3,default,False,14
+Southern,DP,IPT,month,default,default,0.9,0.0,default,False,15
+Southern,DP,IPT,month,default,default,0.9,0.15,default,False,16
+Southern,DP,IPT,month,default,default,0.9,0.3,default,False,17
+Southern,DP,IST,term,default,default,0.9,0.0,default,False,18
+Southern,DP,IST,term,default,default,0.9,0.15,default,False,19
+Southern,DP,IST,term,default,default,0.9,0.3,default,False,20
+Southern,DP,IST,month,default,default,0.9,0.0,default,False,21
+Southern,DP,IST,month,default,default,0.9,0.15,default,False,22
+Southern,DP,IST,month,default,default,0.9,0.3,default,False,23
+Southern,DP,IPT,term,high,default,0.9,0.15,default,False,24
+Southern,DP,IPT,term,default,low,0.9,0.15,default,False,25
+Southern,DP,IPT,term,default,default,1.0,0.15,default,False,26
+Southern,DP,IPT,day,default,default,1.0,0.0,default,False,27
+Southern,DP,IPT,day,default,default,1.0,0.0,u5,False,28
+Southern,DP,IPT,day,default,default,1.0,0.0,u16,False,29
+Southern,None,None,None,default,default,0.9,0.0,default,False,30
+Southern,None,None,None,high,default,0.9,0.15,default,False,31
+Southern,DP,IPT,term,default,default,0.9,0.0,u5,False,32
+Southern,DP,IPT,term,default,default,0.63,0.0,default,False,33
