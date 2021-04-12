@@ -39,22 +39,22 @@ modlists.append(modlist)
 modlist = modfn_sweep_over_burnins(archetype)
 modlists.append(modlist)
 
-modlist = modfn_sweep_over_scenarios(archetype)
+modlist = modfn_sweep_over_scenarios(archetype) #, specific_scenarios_to_run=[0,3,34]
 modlists.append(modlist)
 
 
 ####################
 # Reports and logs #
 ####################
-add_scenario_reports(cb, include_inset=True)
+add_scenario_reports(cb, include_inset=True, include_bednet_events_in_counter=True)
 
 ###############################
 # Submission/COMPs parameters #
 ###############################
 
 comps_experiment_name = "southern_sac_ipt_scenarios"
-# comps_priority = "Normal"
-comps_priority = "Highest"
+comps_priority = "Normal"
+# comps_priority = "Highest"
 comps_coreset = "emod_abcd"
 # comps_coreset = "emod_32cores"
 

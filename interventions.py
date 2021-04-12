@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 from dtk.interventions.itn_age_season import add_ITN_age_season
+from dtk.interventions.ivermectin import add_ivermectin
 from dtk.interventions.property_change import change_individual_property
 from dtk.utils.Campaign.CampaignClass import OutbreakIndividual, BroadcastEvent, CampaignEvent, \
     StandardInterventionDistributionEventCoordinator, \
@@ -244,6 +245,24 @@ def add_smc(cb, u5_coverage, start_days):
                       receiving_drugs_event_name='Received_SMC'
                       )
 
+def add_ivermec(cb, box_duration):
+    #fixme make sure to add Received_Ivermectin to intervention list
+    add_ivermectin(cb,
+                   box_duration=box_duration,
+                   start_days=[1], #Listening for drug delivery in other methods, then give this drug
+                   # ind_property_restrictions=[{"SchoolStatus": "AttendsSchool"}], # unnecessary, as already listening for who gets IPTsc
+                   trigger_condition_list=['Received_Campaign_Drugs', 'Received_RCD_Drugs'])
+
+def add_primaquine(cb):
+    add_drug_campaign(cb,
+                      'MDA',
+                      drug_code="PMQ",
+                      start_days=[1],
+                      trigger_condition_list=['Received_Campaign_Drugs', 'Received_RCD_Drugs'],
+                      receiving_drugs_event_name='Received_Primaquine'
+                      )
+
+
 
 def add_burnin_historical_healthseeking(cb, archetype="Southern", start_year=1970):
     # at certain times, add HS campaign events with different coverages
@@ -279,7 +298,8 @@ def add_burnin_historical_smc(cb, start_year=1970):
 
         add_smc(cb, u5_coverage=u5_cov, start_days=dtk_start_days)
 
-
+# add_ivermectin()
+#
 
 def add_burnin_historical_interventions(cb, archetype):
     add_burnin_historical_healthseeking(cb, archetype)
@@ -370,6 +390,7 @@ def add_scenario_specific_interventions(cb, scenario_number, archetype="Southern
 
     if scenario_dict["interval"] != "None":
         add_scenario_specific_ipt(cb, scenario_dict, archetype)
+
     if scenario_dict["smc_on"]:
         add_scenario_specific_smc(cb)
 

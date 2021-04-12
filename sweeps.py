@@ -12,10 +12,14 @@ def modfn_sweep_over_habitat_scale(habitat_scale_array, archetype):
     modlist = [ModFn(set_ento_splines, hs, archetype) for hs in habitat_scale_array]
     return modlist
 
-def modfn_sweep_over_scenarios(archetype):
+def modfn_sweep_over_scenarios(archetype, specific_scenarios_to_run=None):
     scenario_df = pd.read_csv("scenario_master_list.csv")
     scenario_df = scenario_df[scenario_df["archetype"]==archetype].reset_index(drop=True)
-    scenario_numbers = list(scenario_df["scenario_number"])
+
+    if specific_scenarios_to_run == None:
+        scenario_numbers = list(scenario_df["scenario_number"])
+    else:
+        scenario_numbers = specific_scenarios_to_run
 
     # scenario_numbers = scenario_numbers[:2] #TESTING ONLY
 
