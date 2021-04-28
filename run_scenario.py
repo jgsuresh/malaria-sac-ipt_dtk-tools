@@ -16,7 +16,7 @@ from setup_sim import build_project_cb, set_ento_splines, burnin_setup
 ##################################
 from sweeps import modfn_sweep_over_habitat_scale, modfn_sweep_over_scenarios, modfn_sweep_over_burnins
 
-archetype = "Southern"
+archetype = "Sahel"
 cb = build_project_cb(archetype=archetype)
 
 
@@ -32,14 +32,14 @@ cb.set_param("Simulation_Duration", 2*365)
 #####################
 modlists = []
 
-num_seeds = 10
+num_seeds = 100
 modlist = modfn_sweep_over_seeds(num_seeds)
 modlists.append(modlist)
 
 modlist = modfn_sweep_over_burnins(archetype)
 modlists.append(modlist)
 
-modlist = modfn_sweep_over_scenarios(archetype) #, specific_scenarios_to_run=[0,3,34]
+modlist = modfn_sweep_over_scenarios(archetype, specific_scenarios_to_run=[13,44])
 modlists.append(modlist)
 
 
@@ -52,8 +52,8 @@ add_scenario_reports(cb, include_inset=True, include_bednet_events_in_counter=Tr
 # Submission/COMPs parameters #
 ###############################
 
-comps_experiment_name = "southern_sac_ipt_scenarios"
-comps_priority = "Normal"
+comps_experiment_name = "sahel_sac_ipt_ivermec"
+comps_priority = "AboveNormal"
 # comps_priority = "Highest"
 comps_coreset = "emod_abcd"
 # comps_coreset = "emod_32cores"
@@ -64,5 +64,3 @@ comps_coreset = "emod_abcd"
 
 if __name__=="__main__":
     submit_experiment_to_comps(cb, comps_experiment_name, comps_priority, comps_coreset, modlists=modlists)
-
-

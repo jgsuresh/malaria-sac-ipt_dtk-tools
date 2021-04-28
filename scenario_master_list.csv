@@ -1,70 +1,88 @@
-archetype,drug_type,screen_type,interval,itn_coverage,hs_rate,within_school_coverage,out_of_school_rate,target_age_range,smc_on,scenario_number
-Southern,ASAQ,IPT,term,default,default,0.9,0.0,default,False,0
-Southern,ASAQ,IPT,term,default,default,0.9,0.15,default,False,1
-Southern,ASAQ,IPT,term,default,default,0.9,0.3,default,False,2
-Southern,ASAQ,IPT,month,default,default,0.9,0.0,default,False,3
-Southern,ASAQ,IPT,month,default,default,0.9,0.15,default,False,4
-Southern,ASAQ,IPT,month,default,default,0.9,0.3,default,False,5
-Southern,ASAQ,IST,term,default,default,0.9,0.0,default,False,6
-Southern,ASAQ,IST,term,default,default,0.9,0.15,default,False,7
-Southern,ASAQ,IST,term,default,default,0.9,0.3,default,False,8
-Southern,ASAQ,IST,month,default,default,0.9,0.0,default,False,9
-Southern,ASAQ,IST,month,default,default,0.9,0.15,default,False,10
-Southern,ASAQ,IST,month,default,default,0.9,0.3,default,False,11
-Southern,DP,IPT,term,default,default,0.9,0.0,default,False,12
-Southern,DP,IPT,term,default,default,0.9,0.15,default,False,13
-Southern,DP,IPT,term,default,default,0.9,0.3,default,False,14
-Southern,DP,IPT,month,default,default,0.9,0.0,default,False,15
-Southern,DP,IPT,month,default,default,0.9,0.15,default,False,16
-Southern,DP,IPT,month,default,default,0.9,0.3,default,False,17
-Southern,DP,IST,term,default,default,0.9,0.0,default,False,18
-Southern,DP,IST,term,default,default,0.9,0.15,default,False,19
-Southern,DP,IST,term,default,default,0.9,0.3,default,False,20
-Southern,DP,IST,month,default,default,0.9,0.0,default,False,21
-Southern,DP,IST,month,default,default,0.9,0.15,default,False,22
-Southern,DP,IST,month,default,default,0.9,0.3,default,False,23
-Southern,DP,IPT,term,high,default,0.9,0.15,default,False,24
-Southern,DP,IPT,term,default,low,0.9,0.15,default,False,25
-Southern,DP,IPT,term,default,default,1.0,0.15,default,False,26
-Southern,DP,IPT,day,default,default,1.0,0.0,default,False,27
-Southern,DP,IPT,day,default,default,1.0,0.0,u5,False,28
-Southern,DP,IPT,day,default,default,1.0,0.0,u16,False,29
-Southern,None,None,None,default,default,0.9,0.0,default,False,30
-Southern,None,None,None,high,default,0.9,0.15,default,False,31
-Southern,DP,IPT,term,default,default,0.9,0.0,u5,False,32
-Southern,DP,IPT,term,default,default,0.63,0.0,default,False,33
-Sahel,SPAQ,IPT,term,default,default,0.9,0.0,default,True,0
-Sahel,SPAQ,IPT,term,default,default,0.9,0.15,default,True,1
-Sahel,SPAQ,IPT,term,default,default,0.9,0.3,default,True,2
-Sahel,SPAQ,IPT,month,default,default,0.9,0.0,default,True,3
-Sahel,SPAQ,IPT,month,default,default,0.9,0.15,default,True,4
-Sahel,SPAQ,IPT,month,default,default,0.9,0.3,default,True,5
-Sahel,SPAQ,IST,term,default,default,0.9,0.0,default,True,6
-Sahel,SPAQ,IST,term,default,default,0.9,0.15,default,True,7
-Sahel,SPAQ,IST,term,default,default,0.9,0.3,default,True,8
-Sahel,SPAQ,IST,month,default,default,0.9,0.0,default,True,9
-Sahel,SPAQ,IST,month,default,default,0.9,0.15,default,True,10
-Sahel,SPAQ,IST,month,default,default,0.9,0.3,default,True,11
-Sahel,DP,IPT,term,default,default,0.9,0.0,default,True,12
-Sahel,DP,IPT,term,default,default,0.9,0.15,default,True,13
-Sahel,DP,IPT,term,default,default,0.9,0.3,default,True,14
-Sahel,DP,IPT,month,default,default,0.9,0.0,default,True,15
-Sahel,DP,IPT,month,default,default,0.9,0.15,default,True,16
-Sahel,DP,IPT,month,default,default,0.9,0.3,default,True,17
-Sahel,DP,IST,term,default,default,0.9,0.0,default,True,18
-Sahel,DP,IST,term,default,default,0.9,0.15,default,True,19
-Sahel,DP,IST,term,default,default,0.9,0.3,default,True,20
-Sahel,DP,IST,month,default,default,0.9,0.0,default,True,21
-Sahel,DP,IST,month,default,default,0.9,0.15,default,True,22
-Sahel,DP,IST,month,default,default,0.9,0.3,default,True,23
-Sahel,DP,IPT,term,high,default,0.9,0.15,default,True,24
-Sahel,DP,IPT,term,default,low,0.9,0.15,default,True,25
-Sahel,DP,IPT,term,default,default,1.0,0.15,default,True,26
-Sahel,DP,IPT,day,default,default,1.0,0.0,default,True,27
-Sahel,DP,IPT,day,default,default,1.0,0.0,u5,True,28
-Sahel,DP,IPT,day,default,default,1.0,0.0,u16,True,29
-Sahel,None,None,None,default,default,0.9,0.0,default,True,30
-Sahel,None,None,None,high,default,0.9,0.15,default,True,31
-Sahel,DP,IPT,term,default,default,0.9,0.0,u5,True,32
-Sahel,DP,IPT,term,default,default,0.63,0.0,default,True,33
-Sahel,DP,IPT,term,default,default,0.9,0.15,default,False,34
+archetype,scenario_number,drug_type,screen_type,interval,itn_coverage,hs_rate,within_school_coverage,out_of_school_rate,target_age_range,smc_on,ivermectin,primaquine,smc_age_range,description
+Southern,0,ASAQ,IPT,term,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-term with ASAQ, assuming 0% of kids out of school"
+Southern,1,ASAQ,IPT,term,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Presumptive once-per-term with ASAQ
+Southern,2,ASAQ,IPT,term,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-term with ASAQ, assuming 30% of kids out of school"
+Southern,3,ASAQ,IPT,month,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-month with ASAQ, assuming 0% of kids out of school"
+Southern,4,ASAQ,IPT,month,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Presumptive once-per-month with ASAQ
+Southern,5,ASAQ,IPT,month,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-month with ASAQ, assuming 30% of kids out of school"
+Southern,6,ASAQ,IST,term,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-term with ASAQ, assuming 0% of kids out of school"
+Southern,7,ASAQ,IST,term,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Screen-and-treat once-per-term with ASAQ
+Southern,8,ASAQ,IST,term,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-term with ASAQ, assuming 30% of kids out of school"
+Southern,9,ASAQ,IST,month,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-month with ASAQ, assuming 0% of kids out of school"
+Southern,10,ASAQ,IST,month,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Screen-and-treat once-per-month with ASAQ
+Southern,11,ASAQ,IST,month,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-month with ASAQ, assuming 30% of kids out of school"
+Southern,12,DP,IPT,term,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-term with DP, assuming 0% of kids out of school"
+Southern,13,DP,IPT,term,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Presumptive once-per-term with DP.  This is the default scenario
+Southern,14,DP,IPT,term,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-term with DP, assuming 30% of kids out of school"
+Southern,15,DP,IPT,month,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-month with DP, assuming 0% of kids out of school"
+Southern,16,DP,IPT,month,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Presumptive once-per-month with DP
+Southern,17,DP,IPT,month,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Presumptive once-per-month with DP, assuming 30% of kids out of school"
+Southern,18,DP,IST,term,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-term with DP, assuming 0% of kids out of school"
+Southern,19,DP,IST,term,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Screen-and-treat once-per-term with DP
+Southern,20,DP,IST,term,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-term with DP, assuming 30% of kids out of school"
+Southern,21,DP,IST,month,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-month with DP, assuming 0% of kids out of school"
+Southern,22,DP,IST,month,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Screen-and-treat once-per-month with DP
+Southern,23,DP,IST,month,default,default,0.9,0.3,default,FALSE,FALSE,FALSE,default,"Screen-and-treat once-per-month with DP, assuming 30% of kids out of school"
+Southern,24,DP,IPT,term,high,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,"Same as default (scenario 13), but now with higher ITN coverage"
+Southern,25,DP,IPT,term,default,low,0.9,0.15,default,FALSE,FALSE,FALSE,default,"Same as default (scenario 13), but now with lower HS rate"
+Southern,26,DP,IPT,term,default,default,1,0.15,default,FALSE,FALSE,FALSE,default,"Same as default (scenario 13), but now with 100% within-school coverage"
+Southern,27,DP,IPT,day,default,default,1,0,default,FALSE,FALSE,FALSE,default,Presumptive daily with DP.  Extreme/unrealistic
+Southern,28,DP,IPT,day,default,default,1,0,u5,FALSE,FALSE,FALSE,default,Presumptive daily of all under-5s with DP.  Extreme/unrealistic
+Southern,29,DP,IPT,day,default,default,1,0,u16,FALSE,FALSE,FALSE,default,Presumptive daily of all under-16s with DP.  Extreme/unrealistic
+Southern,30,None,None,None,default,default,0.9,0,default,FALSE,FALSE,FALSE,default,"Baseline scenario.  Default ITN coverange and HS, but no IPTsc"
+Southern,31,None,None,None,high,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Comparator scenario.  Same as baseline (scenario 30) but higher ITN coverage
+Southern,32,DP,IPT,term,default,default,0.9,0,u5,FALSE,FALSE,FALSE,default,Same as default (scenario 13) but now targets under-5s instead of school-age children
+Southern,33,DP,IPT,term,default,default,0.63,0,default,FALSE,FALSE,FALSE,default,Comparator to scenario 32.  Approximately same doses as scenario 32 but given to school-age children
+Southern,34,DP,IPT,term,default,default,0.9,0.15,default,FALSE,TRUE,FALSE,default,"Same as default (scenario 13), but campaign also includes ivermectin"
+Southern,35,DP,IPT,term,default,default,0.9,0.15,default,FALSE,FALSE,TRUE,default,"Same as default (scenario 13), but campaign also includes primaquine"
+Southern,36,DP,IPT,term,default,default,0.9,0.15,default,FALSE,TRUE,TRUE,default,"Same as default (scenario 13), but campaign also includes ivermectin AND primaquine"
+Southern,37,DP,IPT,day,default,default,1,0,default,FALSE,TRUE,TRUE,default,"Presumptive daily with DP, ivermectin, and primaquine.  Extreme/unrealistic"
+Southern,38,None,None,None,high_and_no_age_dependence,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,"Same as scenario 31 (baseline + higher ITN coverage) but now SAC use nets as much as adults"
+Sahel,0,SPAQ,IPT,term,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-term with SPAQ, assuming 0% of kids out of school"
+Sahel,1,SPAQ,IPT,term,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Presumptive once-per-term with SPAQ
+Sahel,2,SPAQ,IPT,term,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-term with SPAQ, assuming 30% of kids out of school"
+Sahel,3,SPAQ,IPT,month,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-month with SPAQ, assuming 0% of kids out of school"
+Sahel,4,SPAQ,IPT,month,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Presumptive once-per-month with SPAQ
+Sahel,5,SPAQ,IPT,month,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-month with SPAQ, assuming 30% of kids out of school"
+Sahel,6,SPAQ,IST,term,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-term with SPAQ, assuming 0% of kids out of school"
+Sahel,7,SPAQ,IST,term,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Screen-and-treat once-per-term with SPAQ
+Sahel,8,SPAQ,IST,term,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-term with SPAQ, assuming 30% of kids out of school"
+Sahel,9,SPAQ,IST,month,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-month with SPAQ, assuming 0% of kids out of school"
+Sahel,10,SPAQ,IST,month,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Screen-and-treat once-per-month with SPAQ
+Sahel,11,SPAQ,IST,month,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-month with SPAQ, assuming 30% of kids out of school"
+Sahel,12,DP,IPT,term,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-term with DP, assuming 0% of kids out of school"
+Sahel,13,DP,IPT,term,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Presumptive once-per-term with DP.  This is the default scenario
+Sahel,14,DP,IPT,term,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-term with DP, assuming 30% of kids out of school"
+Sahel,15,DP,IPT,month,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-month with DP, assuming 0% of kids out of school"
+Sahel,16,DP,IPT,month,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Presumptive once-per-month with DP
+Sahel,17,DP,IPT,month,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Presumptive once-per-month with DP, assuming 30% of kids out of school"
+Sahel,18,DP,IST,term,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-term with DP, assuming 0% of kids out of school"
+Sahel,19,DP,IST,term,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Screen-and-treat once-per-term with DP
+Sahel,20,DP,IST,term,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-term with DP, assuming 30% of kids out of school"
+Sahel,21,DP,IST,month,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-month with DP, assuming 0% of kids out of school"
+Sahel,22,DP,IST,month,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Screen-and-treat once-per-month with DP
+Sahel,23,DP,IST,month,default,default,0.9,0.3,default,TRUE,FALSE,FALSE,default,"Screen-and-treat once-per-month with DP, assuming 30% of kids out of school"
+Sahel,24,DP,IPT,term,high,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,"Same as default (scenario 13), but now with higher ITN coverage"
+Sahel,25,DP,IPT,term,default,low,0.9,0.15,default,TRUE,FALSE,FALSE,default,"Same as default (scenario 13), but now with lower HS rate"
+Sahel,26,DP,IPT,term,default,default,1,0.15,default,TRUE,FALSE,FALSE,default,"Same as default (scenario 13), but now with 100% within-school coverage"
+Sahel,27,DP,IPT,day,default,default,1,0,default,TRUE,FALSE,FALSE,default,Presumptive daily with DP.  Extreme/unrealistic
+Sahel,28,DP,IPT,day,default,default,1,0,u5,TRUE,FALSE,FALSE,default,Presumptive daily of all under-5s with DP.  Extreme/unrealistic
+Sahel,29,DP,IPT,day,default,default,1,0,u16,TRUE,FALSE,FALSE,default,Presumptive daily of all under-16s with DP.  Extreme/unrealistic
+Sahel,30,None,None,None,default,default,0.9,0,default,TRUE,FALSE,FALSE,default,"Baseline scenario.  Default ITN coverange and HS, but no IPTsc"
+Sahel,31,None,None,None,high,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Comparator scenario.  Same as baseline (scenario 30) but higher ITN coverage
+Sahel,32,DP,IPT,term,default,default,0.9,0,u5,TRUE,FALSE,FALSE,default,Same as default (scenario 13) but now targets under-5s instead of school-age children
+Sahel,33,DP,IPT,term,default,default,0.63,0,default,TRUE,FALSE,FALSE,default,Comparator to scenario 32.  Approximately same doses as scenario 32 but given to school-age children
+Sahel,34,DP,IPT,term,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,"Comparator scenario.  Same as default (scenario 13), but now with no SMC"
+Sahel,35,None,None,None,default,default,0.9,0,default,TRUE,FALSE,FALSE,u10,"Comparator scenario.  No IPTsc, but SMC extended to under-10"
+Sahel,36,None,None,None,default,default,0.9,0,default,TRUE,FALSE,FALSE,u15,"Comparator scenario.  No IPTsc, but SMC extended to under-15"
+Sahel,37,DP,IPT,day,default,default,1,0,default,TRUE,TRUE,TRUE,default,"Presumptive daily DP, ivermectin, and primaquine.  Extreme/unrealistic"
+Sahel,38,DP,IPT,term,default,default,0.9,0.15,default,FALSE,FALSE,FALSE,default,Accidental repeat of scenario 34
+Sahel,39,DP,IPT,term,default,default,0.9,0.15,default,FALSE,FALSE,TRUE,default,"No SMC.  Same as default (scenario 13), but campaign also includes ivermectin"
+Sahel,40,DP,IPT,term,default,default,0.9,0.15,default,FALSE,TRUE,FALSE,default,"No SMC.  Same as default (scenario 13), but campaign also includes primaquine"
+Sahel,41,DP,IPT,term,default,default,0.9,0.15,default,FALSE,TRUE,TRUE,default,"No SMC.  Same as default (scenario 13), but campaign also includes ivermectin AND primaquine"
+Sahel,42,DP,IPT,term,default,default,0.9,0.15,default,TRUE,FALSE,FALSE,default,Accidental repeat of scenario 13
+Sahel,43,DP,IPT,term,default,default,0.9,0.15,default,TRUE,FALSE,TRUE,default,"Same as default (scenario 13), but campaign also includes primaquine"
+Sahel,44,DP,IPT,term,default,default,0.9,0.15,default,TRUE,TRUE,FALSE,default,"Same as default (scenario 13), but campaign also includes ivermectin"
+Sahel,45,DP,IPT,term,default,default,0.9,0.15,default,TRUE,TRUE,TRUE,default,"Same as default (scenario 13), but campaign also includes ivermectin AND primaquine"
+Sahel,46,None,None,None,default,default,0.9,0,default,TRUE,FALSE,FALSE,u10_with_DP,"Comparator scenario.  No IPTsc, but SMC extended to under-10.  SMC done with DP."
+Sahel,47,None,None,None,default,default,0.9,0,default,TRUE,FALSE,FALSE,u15_with_DP,"Comparator scenario.  No IPTsc, but SMC extended to under-15.  SMC done with DP."

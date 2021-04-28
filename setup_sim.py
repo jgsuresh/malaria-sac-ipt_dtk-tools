@@ -194,7 +194,10 @@ def basic_gridded_config_builder(archetype="Southern"):
         "Took_Dose",
         "InfectionDropped",
         "Received_Ivermectin",
-        "Received_Primaquine"
+        "Received_Primaquine",
+        "Received_Campaign_Drugs_Term_1",
+        "Received_Campaign_Drugs_Term_2",
+        "Received_Campaign_Drugs_Term_3"
     ]
     cb.set_param("Custom_Individual_Events", full_custom_events_list)
 

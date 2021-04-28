@@ -132,6 +132,59 @@ class TransmissionEndpointFromSummary(SaveEndpoint):
         return pd.DataFrame(sim_data, index=[0])
 
 
+class TransmissionEndpointFromSummaryForMultipleYears(SaveEndpoint):
+    def __init__(self, save_file=None, num_years=19):
+        super().__init__(save_file=save_file, output_filename="MalariaSummaryReport_AnnualAverage.json")
+        self.num_years = num_years
+
+    def select_simulation_data(self, data, simulation):
+        data_summary = data[self.filenames[0]]
+
+        df_list = []
+
+        for year_index in np.arange(self.num_years):
+            sim_data_dict = {
+                "year": year_index,
+
+                "pfpr0_5": get_pfpr_of_custom_agebin_from_summary(data_summary,0,6,year_index=year_index),
+                "pfpr2_10": get_pfpr_of_custom_agebin_from_summary(data_summary,2,11,year_index=year_index),
+                "pfpr6_15": get_pfpr_of_custom_agebin_from_summary(data_summary,6,16,year_index=year_index),
+                "pfpr16_500": get_pfpr_of_custom_agebin_from_summary(data_summary,16,500,year_index=year_index),
+                "pfpr_all": get_pfpr_of_custom_agebin_from_summary(data_summary,0,500,year_index=year_index),
+
+                "clinical_incidence0_5": get_annual_incidence_of_custom_agebin_from_summary(data_summary,0,6,year_index=year_index, incidence_type="clinical"),
+                "clinical_incidence2_10": get_annual_incidence_of_custom_agebin_from_summary(data_summary,2,11,year_index=year_index, incidence_type="clinical"),
+                "clinical_incidence6_15": get_annual_incidence_of_custom_agebin_from_summary(data_summary,6,16,year_index=year_index, incidence_type="clinical"),
+                "clinical_incidence16_500": get_annual_incidence_of_custom_agebin_from_summary(data_summary,16,500,year_index=year_index, incidence_type="clinical"),
+                "clinical_incidence_all": get_annual_incidence_of_custom_agebin_from_summary(data_summary,0,500,year_index=year_index, incidence_type="clinical"),
+
+                "severe_incidence0_5": get_annual_incidence_of_custom_agebin_from_summary(data_summary,0,6,year_index=year_index, incidence_type="severe"),
+                "severe_incidence2_10": get_annual_incidence_of_custom_agebin_from_summary(data_summary,2,11,year_index=year_index, incidence_type="severe"),
+                "severe_incidence6_15": get_annual_incidence_of_custom_agebin_from_summary(data_summary,6,16,year_index=year_index, incidence_type="severe"),
+                "severe_incidence16_500": get_annual_incidence_of_custom_agebin_from_summary(data_summary,16,500,year_index=year_index, incidence_type="severe"),
+                "severe_incidence_all": get_annual_incidence_of_custom_agebin_from_summary(data_summary,0,500,year_index=year_index, incidence_type="severe"),
+
+                "pop0_5": get_pop_of_custom_agebin_from_summary(data_summary,0,6,year_index=year_index),
+                "pop2_10": get_pop_of_custom_agebin_from_summary(data_summary,2,11,year_index=year_index),
+                "pop6_15": get_pop_of_custom_agebin_from_summary(data_summary,6,16,year_index=year_index),
+                "pop16_500": get_pop_of_custom_agebin_from_summary(data_summary,16,500,year_index=year_index),
+                "pop_all": get_pop_of_custom_agebin_from_summary(data_summary,0,500,year_index=year_index)
+            }
+
+            sim_data_dict.update(get_marita_columns_from_summary(data_summary, year_index=year_index))
+
+            df_list.append(pd.DataFrame(sim_data_dict, index=[0]))
+
+        sim_data = pd.concat(df_list)
+
+        sim_data["sim_id"] = simulation.id
+        for tag in simulation.tags:
+            sim_data[tag] = simulation.tags[tag]
+
+        return sim_data
+
+
+
 def run_single_analyzer(exp_id, analyzer, savefile_prefix=""):
     SetupParser.default_block = 'HPC'
     SetupParser.init()
@@ -212,7 +265,8 @@ class SingleYearPfPREndpoint(SaveEndpoint):
 def run_analyzer_for_timing_sweep(exp_id):
     run_single_analyzer(exp_id, SingleYearPfPREndpoint, "timing_sweep")
 
-
+def run_analyzers_for_longer_sims(exp_id):
+    run_analyzers(exp_id, [TransmissionEndpointFromSummaryForMultipleYears, ConsumablesFromCounterReportByYear], savefile_prefix="endpoints")
 
 
 class ConsumablesFromCounterReport(SaveEndpoint):
@@ -248,7 +302,51 @@ class ConsumablesFromCounterReport(SaveEndpoint):
         return pd.DataFrame(sim_data, index=[0])
 
 
+
+
+
+class ConsumablesFromCounterReportByYear(SaveEndpoint):
+    def __init__(self, save_file=None, output_filename="ReportEventCounter.json", num_years=19):
+        super().__init__(save_file=save_file, output_filename=output_filename)
+        self.num_years = num_years
+
+
+    def select_simulation_data(self, data, simulation):
+        data_summary = data[self.filenames[0]]
+
+        fields_to_get = [
+            "Received_Treatment",
+            "Received_Test",
+            "Received_Campaign_Drugs",
+            "Received_RCD_Drugs",
+            "Received_SMC",
+            "Received_Ivermectin",
+            "Received_Primaquine"
+        ]
+
+        df_list = []
+        for year_index in np.arange(self.num_years-1):
+            sim_data_dict = {}
+            sim_data_dict["year"] = year_index
+
+            for f in fields_to_get:
+                if f in data_summary["Channels"]:
+                    sim_data_dict[f] = np.sum(np.array(data_summary["Channels"][f]["Data"][year_index*365:(year_index+1)*365]))
+                else:
+                    print("{} field not in counter report.  Skipping...".format(f))
+
+            df_list.append(pd.DataFrame(sim_data_dict, index=[0]))
+
+        sim_data = pd.concat(df_list)
+        sim_data["sim_id"] = simulation.id
+        for tag in simulation.tags:
+            sim_data[tag] = simulation.tags[tag]
+
+        return sim_data
+
+
 if __name__ == "__main__":
     exp_id = sys.argv[1]
-    run_analyzers_for_scenarios(exp_id)
+    run_analyzers_for_longer_sims(exp_id)
+    # run_analyzers_for_scenarios(exp_id)
     # run_analyzer_for_timing_sweep(exp_id)

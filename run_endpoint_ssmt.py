@@ -4,7 +4,7 @@ from simtools.AssetManager.FileList import FileList
 
 
 # Run parameters:
-exp_id = "f70751f3-2d98-eb11-a2ce-c4346bcb1550"
+exp_id = "40d9a7c4-6ca3-eb11-a2ce-c4346bcb1550"
 
 # ===================================================================================
 
