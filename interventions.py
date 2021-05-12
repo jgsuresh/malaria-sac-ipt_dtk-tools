@@ -30,9 +30,15 @@ flat_annual_itn_discard_rates = {
     "Expiration_Period_Constant": 365
 }
 
+very_low_discard_rates = {
+    "Expiration_Period_Distribution": "EXPONENTIAL_DISTRIBUTION",
+    "Expiration_Period_Exponential": 2500
+}
+
 discard_config = {
     "default": default_itn_discard_rates,
-    "flat_annual": flat_annual_itn_discard_rates
+    "flat_annual": flat_annual_itn_discard_rates,
+    "very_low": very_low_discard_rates
 }
 
 archetype_list = ["Southern", "Central", "Eastern", "Coastal Western", "Sahel"]
@@ -98,17 +104,26 @@ central_seasonal_itn_use = [
     0.82
 ]
 
+
 archetype_seasonal_usage = {
     "Southern": {'min_cov': 0.5, 'max_day': 60},
     "Sahel": {"Times": month_times, "Values": sahel_seasonal_itn_use},
     "Coastal Western": {"Times": month_times, "Values": coastal_western_seasonal_itn_use},
     "Central": {"Times": month_times, "Values": central_seasonal_itn_use},
-    "Eastern": {"Times": month_times, "Values": eastern_seasonal_itn_use}
+    "Eastern": {"Times": month_times, "Values": eastern_seasonal_itn_use},
+    "Magude": {'min_cov': 0.58, 'max_day': 40},
 }
 
 smc_days_in_year = np.array([206,237,267,298])
 
-def add_bednets_for_population_and_births(cb, coverage, start_day=1, seasonal_dependence=None, discard_config_type="default", age_dependence=default_bednet_age_usage):
+def add_bednets_for_population_and_births(cb,
+                                          coverage,
+                                          start_day=1,
+                                          seasonal_dependence=None,
+                                          discard_config_type="default",
+                                          age_dependence=default_bednet_age_usage,
+                                          killing_config=None,
+                                          blocking_config=None):
     if seasonal_dependence is None:
         seasonal_dependence = {}
 
@@ -119,7 +134,9 @@ def add_bednets_for_population_and_births(cb, coverage, start_day=1, seasonal_de
                        age_dependence=age_dependence,
                        demographic_coverage=coverage,
                        seasonal_dependence=seasonal_dependence,
-                       discard_times=discard_config[discard_config_type])
+                       discard_times=discard_config[discard_config_type],
+                       blocking_config=blocking_config,
+                       killing_config=killing_config)
 
     # birth_triggered_bednet_distribution
     add_ITN_age_season(cb,
@@ -128,7 +145,9 @@ def add_bednets_for_population_and_births(cb, coverage, start_day=1, seasonal_de
                        age_dependence=age_dependence,
                        demographic_coverage=coverage,
                        seasonal_dependence=seasonal_dependence,
-                       discard_times=discard_config[discard_config_type])
+                       discard_times=discard_config[discard_config_type],
+                       blocking_config=blocking_config,
+                       killing_config=killing_config)
 
 
 

@@ -268,6 +268,9 @@ def run_analyzer_for_timing_sweep(exp_id):
 def run_analyzers_for_longer_sims(exp_id):
     run_analyzers(exp_id, [TransmissionEndpointFromSummaryForMultipleYears, ConsumablesFromCounterReportByYear], savefile_prefix="endpoints")
 
+def run_analyzer_for_under_five_prevalence_timeseries(exp_id):
+    run_analyzers(exp_id, [UnderFivePrevalenceFromBinnedReport], savefile_prefix="u5_prev_timeseries")
+
 
 class ConsumablesFromCounterReport(SaveEndpoint):
     def __init__(self, save_file=None, output_filename="ReportEventCounter.json"):
@@ -345,8 +348,44 @@ class ConsumablesFromCounterReportByYear(SaveEndpoint):
         return sim_data
 
 
+
+
+
+class UnderFivePrevalenceFromBinnedReport(SaveEndpoint):
+    def __init__(self, save_file=None, output_filename="BinnedReport.json"):
+        super().__init__(save_file=save_file, output_filename=output_filename)
+
+
+    def select_simulation_data(self, data, simulation):
+        data_binned = data[self.filenames[0]]
+
+        # [0] at end is to get first age bin, which is under-5
+        num_rdt_positive = np.array(data_binned["Channels"]["Blood Smear Parasite Positive"]["Data"][0])
+        num_total = np.array(data_binned["Channels"]["Population"]["Data"][0])
+        prev = num_rdt_positive/num_total
+        time = np.arange(len(prev))+1
+
+        cases = np.array(data_binned["Channels"]["New Clinical Cases"]["Data"][0])
+
+        sim_data = pd.DataFrame({
+            "prev_under_5": prev,
+            "time": time,
+            "new_cases_under_5": cases
+        })
+
+        print(sim_data)
+
+        sim_data["sim_id"] = simulation.id
+        for tag in simulation.tags:
+            sim_data[tag] = simulation.tags[tag]
+
+        return sim_data
+
 if __name__ == "__main__":
     exp_id = sys.argv[1]
-    run_analyzers_for_longer_sims(exp_id)
+    # exp_id = "36a1f403-46af-eb11-a2e3-c4346bcb7275"
+
+    # run_analyzers_for_longer_sims(exp_id)
     # run_analyzers_for_scenarios(exp_id)
     # run_analyzer_for_timing_sweep(exp_id)
+    run_analyzer_for_under_five_prevalence_timeseries(exp_id)

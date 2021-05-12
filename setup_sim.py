@@ -62,6 +62,199 @@ def set_ento_splines(cb, habitat_scale, archetype="Southern"):
                           }})
         return_dict = {"hab_scale": habitat_scale}
 
+    elif archetype == "Central":
+        # Amelia's spline setup
+        # x_overall_amelia = 63.1
+        #
+        # set_species_param(cb,
+        #                   'gambiae',
+        #                   "Larval_Habitat_Types",
+        #                   {"CONSTANT": 40000000*x_overall_amelia,
+        #                    "TEMPORARY_RAINFALL": 360000000*x_overall_amelia,
+        #                   "LINEAR_SPLINE": {
+        #                       "Capacity_Distribution_Number_Of_Years": 1,
+        #                       "Capacity_Distribution_Over_Time": {
+        #                           "Times": month_times,
+        #                           "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+        #                       },
+        #                       "Max_Larval_Capacity": 10**habitat_scale
+        #                   }}
+        #                   )
+        #
+        # set_species_param(cb,
+        #                   'funestus',
+        #                   "Larval_Habitat_Types",
+        #                   {"WATER_VEGETATION": 400000000*x_overall_amelia,
+        #                    "LINEAR_SPLINE": {
+        #                        "Capacity_Distribution_Number_Of_Years": 1,
+        #                        "Capacity_Distribution_Over_Time": {
+        #                            "Times": month_times,
+        #                            "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+        #                        },
+        #                        "Max_Larval_Capacity": 10**habitat_scale
+        #                    }}
+        #                   )
+
+        gamb_scale = habitat_scale
+        funest_scale = gamb_scale-1.03 # Calculated for funestus to be ~5% of all mosquitos
+
+        set_species_param(cb,
+                          'gambiae',
+                          "Larval_Habitat_Types",
+                          {"LINEAR_SPLINE": {
+                              "Capacity_Distribution_Number_Of_Years": 1,
+                              "Capacity_Distribution_Over_Time": {
+                                  "Times": month_times,
+                                  "Values": [0.51, 0.42, 0.52, 0.66, 0.86, 0.92, 0.82, 0.75, 0.84, 0.99, 1.0, 0.77]
+                              },
+                              "Max_Larval_Capacity": 10**gamb_scale
+                          }})
+
+        set_species_param(cb,
+                          'funestus',
+                          "Larval_Habitat_Types",
+                          {"LINEAR_SPLINE": {
+                              "Capacity_Distribution_Number_Of_Years": 1,
+                              "Capacity_Distribution_Over_Time": {
+                                  "Times": month_times,
+                                  "Values": [0.87, 0.82, 0.85, 0.9, 0.95, 0.93, 0.89, 0.87, 0.87, 0.94, 1.0, 0.97]
+                              },
+                              "Max_Larval_Capacity": 10**funest_scale
+                          }})
+
+        return_dict = {"hab_scale": habitat_scale}
+
+    elif archetype == "Eastern":
+        # Amelia's spline setup
+        x_overall_amelia = 63.1
+
+        set_species_param(cb,
+                          'arabiensis',
+                          "Larval_Habitat_Types",
+                          {"CONSTANT": 40000000*x_overall_amelia,
+                           "TEMPORARY_RAINFALL": 360000000*x_overall_amelia,
+                           "LINEAR_SPLINE": {
+                               "Capacity_Distribution_Number_Of_Years": 1,
+                               "Capacity_Distribution_Over_Time": {
+                                   "Times": month_times,
+                                   "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+                               },
+                               "Max_Larval_Capacity": 10**habitat_scale
+                           }}
+                          )
+
+        set_species_param(cb,
+                          'gambiae',
+                          "Larval_Habitat_Types",
+                          {"CONSTANT": 40000000*x_overall_amelia,
+                           "TEMPORARY_RAINFALL": 360000000*x_overall_amelia,
+                          "LINEAR_SPLINE": {
+                              "Capacity_Distribution_Number_Of_Years": 1,
+                              "Capacity_Distribution_Over_Time": {
+                                  "Times": month_times,
+                                  "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+                              },
+                              "Max_Larval_Capacity": 10**habitat_scale
+                          }}
+                          )
+
+        set_species_param(cb,
+                          'funestus',
+                          "Larval_Habitat_Types",
+                          {"WATER_VEGETATION": 400000000*x_overall_amelia,
+                           "LINEAR_SPLINE": {
+                               "Capacity_Distribution_Number_Of_Years": 1,
+                               "Capacity_Distribution_Over_Time": {
+                                   "Times": month_times,
+                                   "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+                               },
+                               "Max_Larval_Capacity": 10**habitat_scale
+                           }}
+                          )
+
+        return_dict = {"hab_scale": habitat_scale}
+
+    elif archetype == "Coastal Western":
+        # Amelia's spline setup
+        x_overall_amelia = 63.1
+
+        set_species_param(cb,
+                          'arabiensis',
+                          "Larval_Habitat_Types",
+                          {"CONSTANT": 40000000*x_overall_amelia,
+                           "TEMPORARY_RAINFALL": 360000000*x_overall_amelia,
+                           "LINEAR_SPLINE": {
+                               "Capacity_Distribution_Number_Of_Years": 1,
+                               "Capacity_Distribution_Over_Time": {
+                                   "Times": month_times,
+                                   "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+                               },
+                               "Max_Larval_Capacity": 10**habitat_scale
+                           }}
+                          )
+
+
+        set_species_param(cb,
+                          'gambiae',
+                          "Larval_Habitat_Types",
+                          {"CONSTANT": 40000000*x_overall_amelia,
+                           "TEMPORARY_RAINFALL": 360000000*x_overall_amelia,
+                           "LINEAR_SPLINE": {
+                               "Capacity_Distribution_Number_Of_Years": 1,
+                               "Capacity_Distribution_Over_Time": {
+                                   "Times": month_times,
+                                   "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+                               },
+                               "Max_Larval_Capacity": 10**habitat_scale
+                           }}
+                          )
+
+        set_species_param(cb,
+                          'funestus',
+                          "Larval_Habitat_Types",
+                          {"WATER_VEGETATION": 400000000*x_overall_amelia,
+                           "LINEAR_SPLINE": {
+                               "Capacity_Distribution_Number_Of_Years": 1,
+                               "Capacity_Distribution_Over_Time": {
+                                   "Times": month_times,
+                                   "Values": [0.086, 0.023, 0.034, 0.0029, 0.077, 0.23, 0.11, 1., 0.19, 0.19, 0.074, 0.06]
+                               },
+                               "Max_Larval_Capacity": 10**habitat_scale
+                           }}
+                          )
+        return_dict = {"hab_scale": habitat_scale}
+
+    elif archetype == "Magude":
+        arab_scale = habitat_scale
+        funest_scale = arab_scale-0.56
+
+        set_species_param(cb,
+                          'funestus',
+                          "Larval_Habitat_Types",
+                          {"LINEAR_SPLINE": {
+                              "Capacity_Distribution_Number_Of_Years": 1,
+                              "Capacity_Distribution_Over_Time": {
+                                  "Times": month_times,
+                                  "Values": [0.009, 0.438, 0.005, 0.088, 0.049, 1.000, 0.023, 0.170, 0.015, 0.008, 0.376, 0.193]
+                              },
+                              "Max_Larval_Capacity": 10**funest_scale
+                          }})
+
+        set_species_param(cb,
+                          'arabiensis',
+                          'Larval_Habitat_Types', {
+                              "LINEAR_SPLINE": {
+                                  "Capacity_Distribution_Number_Of_Years": 1,
+                                  "Capacity_Distribution_Over_Time": {
+                                      "Times": month_times,
+                                      "Values": [0.005, 0.119, 1.000, 0.069, 0.184, 0.203, 0.486, 0.157, 0.149, 0.185, 0.119, 0.011]
+                                  },
+                                  "Max_Larval_Capacity": 10**arab_scale
+                              },
+                              "CONSTANT": 10**4.9
+                          })
+        return_dict = {"hab_scale": habitat_scale}
+
     else:
         raise NotImplementedError
 
@@ -90,6 +283,69 @@ def set_ento(cb, archetype="Southern"):
         set_species_param(cb, 'gambiae', 'Adult_Life_Expectancy', 20)
         set_species_param(cb, 'gambiae', 'Anthropophily', 0.65)
         set_species_param(cb, 'gambiae', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+    elif archetype == "Central":
+        set_species(cb, ["gambiae", "funestus"])
+
+        set_species_param(cb, 'gambiae', "Indoor_Feeding_Fraction", 0.5)
+        set_species_param(cb, 'gambiae', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'gambiae', 'Anthropophily', 0.85)
+        set_species_param(cb, 'gambiae', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+        set_species_param(cb, 'funestus', "Indoor_Feeding_Fraction", 0.5)
+        set_species_param(cb, 'funestus', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'funestus', 'Anthropophily', 0.65)
+        set_species_param(cb, 'funestus', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+    elif archetype == "Eastern":
+        set_species(cb, ["gambiae", "funestus", "arabiensis"])
+
+        set_species_param(cb, 'gambiae', "Indoor_Feeding_Fraction", 0.85)
+        set_species_param(cb, 'gambiae', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'gambiae', 'Anthropophily', 0.85)
+        set_species_param(cb, 'gambiae', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+        set_species_param(cb, 'arabiensis', "Indoor_Feeding_Fraction", 0.5)
+        set_species_param(cb, 'arabiensis', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'arabiensis', 'Anthropophily', 0.65)
+        set_species_param(cb, 'arabiensis', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+        set_species_param(cb, 'funestus', "Indoor_Feeding_Fraction", 0.7) # Motivated by Uganda Vectorlink 2019
+        set_species_param(cb, 'funestus', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'funestus', 'Anthropophily', 0.65)
+        set_species_param(cb, 'funestus', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+    elif archetype == "Coastal Western":
+        set_species(cb, ["gambiae", "funestus", "arabiensis"])
+
+        set_species_param(cb, 'gambiae', "Indoor_Feeding_Fraction", 0.85)
+        set_species_param(cb, 'gambiae', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'gambiae', 'Anthropophily', 0.8) # Slightly tuned down - Nigeria Vectorlink 2019
+        set_species_param(cb, 'gambiae', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+        set_species_param(cb, 'arabiensis', "Indoor_Feeding_Fraction", 0.5)
+        set_species_param(cb, 'arabiensis', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'arabiensis', 'Anthropophily', 0.65)
+        set_species_param(cb, 'arabiensis', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+        set_species_param(cb, 'funestus', "Indoor_Feeding_Fraction", 0.85)
+        set_species_param(cb, 'funestus', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'funestus', 'Anthropophily', 0.65)
+        set_species_param(cb, 'funestus', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+    elif archetype == "Magude":
+        set_species(cb, ["arabiensis", "funestus"])
+
+        set_species_param(cb, 'arabiensis', 'Indoor_Feeding_Fraction', 0.95)
+        set_species_param(cb, 'arabiensis', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'arabiensis', 'Anthropophily', 0.65)
+        set_species_param(cb, 'arabiensis', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
+        set_species_param(cb, 'funestus', "Indoor_Feeding_Fraction", 0.6)
+        set_species_param(cb, 'funestus', 'Adult_Life_Expectancy', 20)
+        set_species_param(cb, 'funestus', 'Anthropophily', 0.65)
+        set_species_param(cb, 'funestus', 'Vector_Sugar_Feeding_Frequency', "VECTOR_SUGAR_FEEDING_NONE")
+
 
     else:
         raise NotImplementedError
@@ -133,6 +389,52 @@ def set_input_files(cb, archetype="Southern"):
             # "Land_Temperature_Filename": "dtk_simulation_input/climate/sahel/Burkina Faso_30arcsec_air_temperature_daily.bin",
             # "Rainfall_Filename": "dtk_simulation_input/climate/sahel/Burkina Faso_30arcsec_rainfall_daily.bin",
             # "Relative_Humidity_Filename": "dtk_simulation_input/climate/sahel/Burkina Faso_30arcsec_relative_humidity_daily.bin"
+        })
+    elif archetype == "Central":
+        cb.update_params({
+            "Demographics_Filenames": ["dtk_simulation_input/demo_central.json"],
+            "Climate_Model": "CLIMATE_CONSTANT",
+            # "Climate_Model": "CLIMATE_BY_DATA",
+            "Base_Air_Temperature": 27,
+            "Base_Land_Temperature": 27,
+            "Air_Temperature_Filename": "dtk_simulation_input/climate/central/DemocraticRepublicOfTheCongo_30arcsec_air_temperature_daily.bin",
+            "Land_Temperature_Filename": "dtk_simulation_input/climate/central/DemocraticRepublicOfTheCongo_30arcsec_air_temperature_daily.bin",
+            "Rainfall_Filename": "dtk_simulation_input/climate/central/DemocraticRepublicOfTheCongo_30arcsec_rainfall_daily.bin",
+            "Relative_Humidity_Filename": "dtk_simulation_input/climate/central/DemocraticRepublicOfTheCongo_30arcsec_relative_humidity_daily.bin"
+        })
+
+    elif archetype == "Eastern":
+        cb.update_params({
+            "Demographics_Filenames": ["dtk_simulation_input/demo_eastern.json"],
+            # "Climate_Model": "CLIMATE_CONSTANT",
+            "Climate_Model": "CLIMATE_BY_DATA",
+            "Base_Air_Temperature": 27,
+            "Base_Land_Temperature": 27,
+            "Air_Temperature_Filename": "dtk_simulation_input/climate/eastern/Ethiopia_30arcsec_air_temperature_daily.bin",
+            "Land_Temperature_Filename": "dtk_simulation_input/climate/eastern/Ethiopia_30arcsec_air_temperature_daily.bin",
+            "Rainfall_Filename": "dtk_simulation_input/climate/eastern/Ethiopia_30arcsec_rainfall_daily.bin",
+            "Relative_Humidity_Filename": "dtk_simulation_input/climate/eastern/Ethiopia_30arcsec_relative_humidity_daily.bin"
+        })
+
+    elif archetype == "Coastal Western":
+        cb.update_params({
+            "Demographics_Filenames": ["dtk_simulation_input/demo_coastal_western.json"],
+            # "Climate_Model": "CLIMATE_CONSTANT",
+            "Climate_Model": "CLIMATE_BY_DATA",
+            "Base_Air_Temperature": 27,
+            "Base_Land_Temperature": 27,
+            "Air_Temperature_Filename": "dtk_simulation_input/climate/coastal_western/Nigeria_30arcsec_air_temperature_daily.bin",
+            "Land_Temperature_Filename": "dtk_simulation_input/climate/coastal_western/Nigeria_30arcsec_air_temperature_daily.bin",
+            "Rainfall_Filename": "dtk_simulation_input/climate/coastal_western/Nigeria_30arcsec_rainfall_daily.bin",
+            "Relative_Humidity_Filename": "dtk_simulation_input/climate/coastal_western/Nigeria_30arcsec_relative_humidity_daily.bin"
+        })
+
+    elif archetype == "Magude":
+        cb.update_params({
+            "Demographics_Filenames": ["dtk_simulation_input/demo_southern.json"],
+            "Climate_Model": "CLIMATE_CONSTANT",
+            "Base_Air_Temperature": 27,
+            "Base_Land_Temperature": 27
         })
 
     else:
