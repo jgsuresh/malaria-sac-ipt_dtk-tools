@@ -24,8 +24,9 @@ def add_burnin_reports(cb, include_inset=False):
 
 summary_age_bins = list(range(20)) + list(range(20,125,5))
 
-def add_scenario_reports(cb, include_inset=True, include_bednet_events_in_counter=False):
-    add_summary_report(cb, age_bins=summary_age_bins, start=365)
+def add_scenario_reports(cb, include_summary=True, include_inset=True, include_bednet_events_in_counter=False):
+    if include_summary:
+        add_summary_report(cb, age_bins=summary_age_bins, start=365)
 
     events_to_count = [
         "Received_Treatment",

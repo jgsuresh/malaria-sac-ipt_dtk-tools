@@ -271,6 +271,9 @@ def run_analyzers_for_longer_sims(exp_id):
 def run_analyzer_for_under_five_prevalence_timeseries(exp_id):
     run_analyzers(exp_id, [UnderFivePrevalenceFromBinnedReport], savefile_prefix="u5_prev_timeseries")
 
+def run_analyzer_for_prevalence_and_incidence_timeseries(exp_id): #, scenario_list=None):
+    run_analyzers(exp_id, [GrabInsetChartChannelsForSpecificScenarios], savefile_prefix="timeseries")
+
 
 class ConsumablesFromCounterReport(SaveEndpoint):
     def __init__(self, save_file=None, output_filename="ReportEventCounter.json"):
@@ -381,11 +384,43 @@ class UnderFivePrevalenceFromBinnedReport(SaveEndpoint):
 
         return sim_data
 
+
+class GrabInsetChartChannelsForSpecificScenarios(SaveEndpoint):
+    def __init__(self, save_file=None, output_filename="InsetChart.json" ,scenario_list=None):
+        super().__init__(save_file=save_file, output_filename=output_filename)
+        # self.scenario_list = scenario_list
+        self.scenario_list = [13,30]
+
+
+    def select_simulation_data(self, data, simulation):
+        data_binned = data[self.filenames[0]]
+
+        prev = np.array(data_binned["Channels"]["Blood Smear Parasite Prevalence"]["Data"])
+        cases = np.array(data_binned["Channels"]["New Clinical Cases"]["Data"])
+
+        sim_data = pd.DataFrame({
+            "prev": prev,
+            "cases": cases,
+            "time": np.arange(len(prev))
+        })
+
+        sim_data["sim_id"] = simulation.id
+        for tag in simulation.tags:
+            sim_data[tag] = simulation.tags[tag]
+
+        # print(self.scenario_list)
+        # print(sim_data["scenario_number"])
+        if self.scenario_list is None or simulation.tags["scenario_number"] in self.scenario_list:
+            return sim_data
+
+
+
 if __name__ == "__main__":
     exp_id = sys.argv[1]
-    # exp_id = "36a1f403-46af-eb11-a2e3-c4346bcb7275"
+    # exp_id = "53be112d-06b8-eb11-a2e3-c4346bcb7275" # for local testing/running only
 
     # run_analyzers_for_longer_sims(exp_id)
     # run_analyzers_for_scenarios(exp_id)
     # run_analyzer_for_timing_sweep(exp_id)
-    run_analyzer_for_under_five_prevalence_timeseries(exp_id)
+    # run_analyzer_for_under_five_prevalence_timeseries(exp_id)
+    run_analyzer_for_prevalence_and_incidence_timeseries(exp_id)

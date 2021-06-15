@@ -17,7 +17,7 @@ from setup_sim import build_project_cb, set_ento_splines, burnin_setup
 ##################################
 from sweeps import modfn_sweep_over_habitat_scale, modfn_sweep_over_scenarios, modfn_sweep_over_burnins
 
-archetype = "Coastal Western"
+archetype = "Central"
 cb = build_project_cb(archetype=archetype)
 
 
@@ -26,41 +26,40 @@ cb = build_project_cb(archetype=archetype)
 ##################################
 # e.g. simulation duration, serialization, input files
 
-cb.set_param("Simulation_Duration", 7*365)
+cb.set_param("Simulation_Duration", 2*365)
 
-set_ento_splines(cb, habitat_scale=8, archetype=archetype) # TESTING
 
 #####################
 # Experiment sweeps #
 #####################
 modlists = []
 
-num_seeds = 1
+num_seeds = 10
 modlist = modfn_sweep_over_seeds(num_seeds)
 modlists.append(modlist)
 
-# modlist = modfn_sweep_over_burnins(archetype)
-# modlists.append(modlist)
-#
-# modlist = modfn_sweep_over_scenarios(archetype, specific_scenarios_to_run=[13,44])
-# modlists.append(modlist)
+modlist = modfn_sweep_over_burnins(archetype)
+modlists.append(modlist)
+
+modlist = modfn_sweep_over_scenarios(archetype, specific_scenarios_to_run=None)
+modlists.append(modlist)
 
 
 ####################
 # Reports and logs #
 ####################
 add_scenario_reports(cb, include_inset=True, include_bednet_events_in_counter=True)
-add_habitat_report(cb)
+# add_habitat_report(cb)
 
 ###############################
 # Submission/COMPs parameters #
 ###############################
 
-comps_experiment_name = "western_sac_ipt_TEST"
-comps_priority = "Normal"
+comps_experiment_name = "central_sac_ipt_scenarios"
+comps_priority = "AboveNormal"
 # comps_priority = "Highest"
-# comps_coreset = "emod_abcd"
-comps_coreset = "emod_32cores"
+comps_coreset = "emod_abcd"
+# comps_coreset = "emod_32cores"
 
 ##################
 # Job submission #
